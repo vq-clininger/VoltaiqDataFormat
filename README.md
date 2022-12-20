@@ -10,6 +10,7 @@ Downloadable [Voltaiq Data Format Specification](https://github.com/vq-clininger
 
 # Example Files
 Example [Metadata file](https://github.com/vq-clininger/VoltaiqDataFormat/blob/main/VDFMetadata_Voltaiq_EV_HPPC_Cell01-72.csv) in Voltaiq Data Format
-Example [Raw Test data file] in Voltaiq Data Format (https://github.com/vq-clininger/VoltaiqDataFormat/blob/main/VDF_Voltaiq_EV_HPPC_Cell01.xlsx)
+
+Example [Raw Test data file](https://github.com/vq-clininger/VoltaiqDataFormat/blob/main/VDF_Voltaiq_EV_HPPC_Cell01.xlsx) in Voltaiq Data Format
 
 
