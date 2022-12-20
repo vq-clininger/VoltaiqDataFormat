@@ -14,5 +14,5 @@ Example [Metadata file](https://github.com/vq-clininger/VoltaiqDataFormat/blob/m
 Example [Raw Test data file](https://github.com/vq-clininger/VoltaiqDataFormat/blob/main/VDF_Voltaiq_EV_HPPC_Cell01.xlsx) in Voltaiq Data Format
 
 # FAQ
-###How do I use Voltaiq Data Format?
+### How do I use Voltaiq Data Format?
 
