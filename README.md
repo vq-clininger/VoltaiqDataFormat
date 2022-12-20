@@ -13,7 +13,7 @@ The Voltaiq Data Format requires the following assumptions to be true.
     * A subsequent check on “Start Time”, “Channel Number”, and “Tester ID” (if present) will be conducted to guarantee uniqueness on those constraints 
 
 ## Metadata Header 
-Each data file should begin with a specially formatted Metadata Header which can be any number of lines, in which each line contains a single "key: value" pair representing one piece of metadata (with a “: ” delimiter). There are a set of required fields, but any amount of metadata can be included in the header, up to 1024 key: value pairs. The termination of the header is indicated by a line containing only the string "[DATA START]". If the “REQUIRED” metadata are not present, the data file will not be imported.
+Each data file should begin with a specially formatted Metadata Header which can be any number of lines, in which each line contains a single "key: value" pair representing one piece of metadata (with a “: ” delimiter). There are a set of required fields, but any amount of metadata can be included in the header, up to 1024 key: value pairs. The termination of the header is indicated by a line containing only the string "[DATA START]". If the “REQUIRED” metadata are not present, the data file will not be imported. Sample files can be seen in the [Raw Test data files](https://github.com/vq-clininger/VoltaiqDataFormat/blob/main/VDF_Voltaiq_EV_HPPC_Cell01.xlsx) directory.
 ### Metadata (REQUIRED)
 * “Start Time”
    * UTC timestamp for the start of this test. Either of these formats is allowed:
@@ -27,12 +27,12 @@ Each data file should begin with a specially formatted Metadata Header which can
 Other optional metadata entries can be seen in the [Voltaiq Data Format Specification](https://github.com/vq-clininger/VoltaiqDataFormat/blob/main/Voltaiq%20Data%20Format.pdf).
 
 ## Data
-After the Metadata Header and the "[DATA START]" line, the remainder of the file should contain a data header followed by time-series performance data.
+After the Metadata Header and the "[DATA START]" line, the remainder of the file should contain a data header followed by time-series performance data. Sample files can be seen in the [Raw Test data files](https://github.com/vq-clininger/VoltaiqDataFormat/blob/main/VDF_Voltaiq_EV_HPPC_Cell01.xlsx) directory.
 
 ### Data Header
 The Data Header begins on the line directly after the "[DATA START]" line. The data header is two sequential lines that describe the measurement and unit associated with the measurement. The data header and all data lines are delimited by a tab character. The order of the columns is not important, they can come in any order.
 
-The first data header line contains labels for each data column. Some common examples of this might be: “Voltage”, “Current”, or “Power”. The second data header line contains units for each column, from the list of supported units provided by Voltaiq (see Appendix A). If a unit is desired that is not currently supported by Voltaiq, let us know (support@voltaiq.com) and we can prioritize building support for it within our platform.
+The first data header line contains labels for each data column. Some common examples of this might be: “Voltage”, “Current”, or “Power”. The second data header line contains units for each column, from the list of supported units provided by Voltaiq (see Appendix A). If a unit is desired that is not currently supported by Voltaiq, let us know (community@voltaiq.com).
 ### Data Columns
 Data columns are the time series data that will be imported and displayable in the Voltaiq Application.
 ### Data Columns (REQUIRED)
@@ -59,7 +59,7 @@ Note: for columns with a Dimension other than “None”, a Unit from Appendix A
    * Dimension: Potential
    * Logical requirements and notes: N/A
 
-
+Other optional data entries can be seen in the [Voltaiq Data Format Specification](https://github.com/vq-clininger/VoltaiqDataFormat/blob/main/Voltaiq%20Data%20Format.pdf).
 
 
 
@@ -67,10 +67,10 @@ Note: for columns with a Dimension other than “None”, a Unit from Appendix A
 Downloadable [Voltaiq Data Format Specification](https://github.com/vq-clininger/VoltaiqDataFormat/blob/main/Voltaiq%20Data%20Format.pdf)
 
 
-# Example Files
-Example [Metadata file](https://github.com/vq-clininger/VoltaiqDataFormat/blob/main/VDFMetadata_Voltaiq_EV_HPPC_Cell01-72.csv) in Voltaiq Data Format
+# Sample Files
+Sample [Metadata file](https://github.com/vq-clininger/VoltaiqDataFormat/blob/main/VDFMetadata_Voltaiq_EV_HPPC_Cell01-72.csv) in Voltaiq Data Format
 
-Example [Raw Test data file](https://github.com/vq-clininger/VoltaiqDataFormat/blob/main/VDF_Voltaiq_EV_HPPC_Cell01.xlsx) in Voltaiq Data Format
+Sampe [Raw Test data files](https://github.com/vq-clininger/VoltaiqDataFormat/blob/main/VDF_Voltaiq_EV_HPPC_Cell01.xlsx) in Voltaiq Data Format
 
 # FAQ
 ### How do I use Voltaiq Data Format?
