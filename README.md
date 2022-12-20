@@ -10,7 +10,56 @@ The Voltaiq Data Format requires the following assumptions to be true.
 * Uniqueness for a test will be determined by the data file name: all datafiles should have a unique file name to be imported correctly.
     * To help create unique filenames, we recommend including relevant metadata in the naming convention.
       * An example convention might be “{date}_{channel number}_{test name}.csv” -> “2000-01-01_2_CyclingData.csv”
-      * A subsequent check on “Start Time”, “Channel Number”, and “Tester ID” (if present) will be conducted to guarantee uniqueness on those constraints 
+    * A subsequent check on “Start Time”, “Channel Number”, and “Tester ID” (if present) will be conducted to guarantee uniqueness on those constraints 
+
+## Metadata Header 
+Each data file should begin with a specially formatted Metadata Header which can be any number of lines, in which each line contains a single "key: value" pair representing one piece of metadata (with a “: ” delimiter). There are a set of required fields, but any amount of metadata can be included in the header, up to 1024 key: value pairs. The termination of the header is indicated by a line containing only the string "[DATA START]". If the “REQUIRED” metadata are not present, the data file will not be imported.
+### Metadata (REQUIRED)
+* “Start Time”
+   * UTC timestamp for the start of this test. Either of these formats is allowed:
+   * Unix epoch timestamp- in milliseconds.
+   * ISO 8601 standard: ("yyyy-MM-dd'T'HH:mm:ssZ").
+* "Timezone"
+   * The timezone where the test is being run. Either of these formats is allowed:
+   * International timezone format ("America/New_York").
+   * UTC offset ("-4:00").
+
+Other optional metadata entries can be seen in the [Voltaiq Data Format Specification](https://github.com/vq-clininger/VoltaiqDataFormat/blob/main/Voltaiq%20Data%20Format.pdf).
+
+## Data
+After the Metadata Header and the "[DATA START]" line, the remainder of the file should contain a data header followed by time-series performance data.
+
+### Data Header
+The Data Header begins on the line directly after the "[DATA START]" line. The data header is two sequential lines that describe the measurement and unit associated with the measurement. The data header and all data lines are delimited by a tab character. The order of the columns is not important, they can come in any order.
+
+The first data header line contains labels for each data column. Some common examples of this might be: “Voltage”, “Current”, or “Power”. The second data header line contains units for each column, from the list of supported units provided by Voltaiq (see Appendix A). If a unit is desired that is not currently supported by Voltaiq, let us know (support@voltaiq.com) and we can prioritize building support for it within our platform.
+### Data Columns
+Data columns are the time series data that will be imported and displayable in the Voltaiq Application.
+### Data Columns (REQUIRED)
+The following columns are required, and must be present in each data file in order for any data to be imported into Voltaiq. If these columns are not present, the data file will not be imported.
+
+Note: for columns with a Dimension other than “None”, a Unit from Appendix A matching the specified dimension must be included on the second data header line.
+
+* “Test Time”
+   * Definition: Time elapsed since the start of the test.
+   * Data Type: Float
+   * Dimension: Time
+   * Logical requirements and notes:
+   * Sequential values within the test may not decrease (i.e. values should be in ascending order).
+* “Current”
+   * Definition: Instantaneous value of current.
+   * Data Type: Float
+   * Dimension: Current
+   * Logical requirements and notes:
+   * The sign convention is positive for charge current and negative for discharge current.
+
+* “Voltage”
+   * Definition: Instantaneous value of potential.
+   * Data Type: Float
+   * Dimension: Potential
+   * Logical requirements and notes: N/A
+
+
 
 
 
