@@ -15,4 +15,11 @@ Example [Raw Test data file](https://github.com/vq-clininger/VoltaiqDataFormat/b
 
 # FAQ
 ### How do I use Voltaiq Data Format?
+When you collect data that describes the performance of a battery, write that data to, or collect that data in Voltaiq Data Format. Voltaiq Data Format outlines the format and conventions for the battery data. The data can then be uploaded to [Voltaiq Community Edition](https://www.voltaiqcommunity.com/) and added to the large database of battery data for Machine Learning and Data Science for battery performance data. 
+When you collect metadata about your batteries or battery data, collect that data in Voltaiq Metadata Format, and similarly, upload to [Voltaiq Community Edition](https://www.voltaiqcommunity.com/).
+
+### How do I learn more about Voltaiq Data Format?
+There is a [publication](https://www.frontiersin.org/articles/10.3389/fenrg.2022.1059154/full) about Voltaiq Data Format where you can read more about how this format came about.
+
+
 
