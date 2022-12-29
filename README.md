@@ -3,6 +3,8 @@ This repository stores the Voltaiq Data Format standardization, conventions, and
 
 Voltaiq Data Format is a CSV format for battery data collected across the battery development lifecycle. Standardization of format and conventions allows for ease of comparison and usability of the battery data across disparate collection methods, organizations, and testing protocols.
 
+There is a [publication](https://www.frontiersin.org/articles/10.3389/fenrg.2022.1059154/full) about Voltaiq Data Format where you can read more about how this format came about.
+
 The Voltaiq Data Format requires the following assumptions to be true:
 * Data files are CSV format with a "Tab" delimiter, and files end with the extension .csv.
 * Each data file represents one and only one test — tests will not be split across data files and data files will not contain data from multiple tests.
