@@ -1,10 +1,3 @@
-See page here:
-https://github.com/vq-clininger/VoltaiqDataFormat/blob/main/README.md
-
-
-
-Text:
-
 # Description
 This repository stores the Voltaiq Data Format standardization, conventions and examples.
 
