@@ -35,12 +35,14 @@ Here is an example mat_to_vdf_config.json file:
 ```
 
 Where the necessary components of the file are:
-filepath - the filepath to the .mat file to convert.
-variables - the name, location and unit of each variable within the .mat file that will be converted. This must include Test_Time, Current and Potential at minimum. Any variable with a space (Test Time) must be replaced with an underscore (Test_Time).
-    Test Time - the time elapsed since the start of the test. Values must be in ascending order
-    Current - Instantaneous value of current. Values must be positive for charge current and negative for discharge current
-    Potential - Instantaneous value of Potential
-starttime - UTC Timestamp for the start of the test. Must be in Unix epoch time stamp (ms) or ISO 8601 standard: ("yyyy-MM-dd'T'HH:mm:ssZ").
-timezone - The timezone where the test is being run. Must be in International timezone format ("America/New_York") or UTC offset ("-4:00")
-Output
+
+* filepath - the filepath to the .mat file to convert.
+* variables - the name, location and unit of each variable within the .mat file that will be converted. This must include Test_Time, Current and Potential at minimum. Any variable with a space (Test Time) must be replaced with an underscore (Test_Time).
+    * Test Time - the time elapsed since the start of the test. Values must be in ascending order
+    * Current - Instantaneous value of current. Values must be positive for charge current and negative for discharge current
+    * Potential - Instantaneous value of Potential
+* starttime - UTC Timestamp for the start of the test. Must be in Unix epoch time stamp (ms) or ISO 8601 standard: ("yyyy-MM-dd'T'HH:mm:ssZ").
+* timezone - The timezone where the test is being run. Must be in International timezone format ("America/New_York") or UTC offset ("-4:00")
+
+# Output
 Once the JSON file is configured, run mat_to_vdf.m. A file will be created in the same directory as the source .mat file appended with _vdf.txt.
