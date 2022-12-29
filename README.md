@@ -9,7 +9,7 @@ The Voltaiq Data Format requires the following assumptions to be true:
 * Uniqueness for a test will be determined by the data file name; all datafiles should have a unique file name to be imported correctly.
     * To help create unique file names, relevant metadata should be included in the naming convention.
       * An example convention might be: “{date}_{channel number}_{test name}.csv” -> “2023-01-05_2_CyclingData.csv”
-    * To ensure uniqueness, “Start Time”, “Channel Number”, and “Tester ID” (if present) in combination with filename should also be unique. 
+    * To ensure uniqueness, “Start Time”, “Channel Number”, and “Tester ID” (if present) in combination with filename should be unique. 
 
 ## Metadata Header 
 Each data file should begin with a specially formatted Metadata Header which can be any number of lines, in which each line contains a single "key: value" pair representing one piece of metadata (with a “: ” delimiter). There are a set of required fields. Additionally, up to 1024 key: value pairs of metadata may also be included. The termination of the header is indicated by a line containing only the string "[DATA START]". If the “REQUIRED” metadata are not present, the data file will not be imported. Sample files can be seen in the [Raw Test data files](https://github.com/vq-clininger/VoltaiqDataFormat/blob/main/VDF_Voltaiq_EV_HPPC_Cell01.xlsx) directory.
