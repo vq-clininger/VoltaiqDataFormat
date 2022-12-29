@@ -1,5 +1,5 @@
 # Description
-This repository stores the Voltaiq Data Format standardization, conventions and examples.
+This repository stores the Voltaiq Data Format standardization, conventions, and examples.
 
 Voltaiq Data Format is a CSV format for battery data collected across the battery development lifecycle. Standardization of format and conventions allows for ease of comparison and usability of the battery data across disparate collection methods, organizations, and testing protocols.
 
