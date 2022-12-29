@@ -1,0 +1,24 @@
+{
+    "description": "This json configuration file aids mat_to_vdf.m by converting electrochemical data stored in .mat to VDF [Voltaiq Data Format]",
+    "filepath": "/home/jovyan/Scott/BI Testing/Advanced_test.mat",
+    "variables": 
+        {
+            "Test_Time": {
+                "location" : "ans.V.Time",
+                "unit" : "second"
+            },
+            "Current": {
+                "location" : "ans.I.Data",
+                "unit" : "amp"
+            },
+            "Potential": {
+                "location" : "ans.V.Data",
+                "unit" : "volt"
+            }
+        },
+    "starttime" : "2013-09-29T18:46:19Z",
+    "timezone" : "Europe/Berlin"
+}
+
+        
+        
