@@ -10,6 +10,7 @@ All variables must be of the same size. In this example, meas.Current, meas.Time
 # The JSON configuration File
 The JSON file must be placed in the same directory as mat_to_vdf.m. 
 Here is an example mat_to_vdf_config.json file:
+```json
 {
     "description": "This json configuration file aids mat_to_vdf.m by converting electrochemical data stored in .mat to VDF [Voltaiq Data Format]",
     "filepath": "/home/Matlab/mat_to_vdf/example_echem_data.mat",
@@ -31,6 +32,7 @@ Here is an example mat_to_vdf_config.json file:
     "starttime" : "2013-09-29T18:46:19Z",
     "timezone" : "Europe/Berlin"
 }
+```
 
 Where the necessary components of the file are:
 filepath - the filepath to the .mat file to convert.
