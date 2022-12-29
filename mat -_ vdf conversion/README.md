@@ -1,13 +1,13 @@
-Converting .mat files to the Voltaiq Data Format (VDF)
-Please note that Voltaiq may occasionally update the voltaiq_examples directory and overwrite example files, including this one. If you wish to modify this example script and keep your changes, please copy the directory Matlab data to VDF Conversion Script/ to a local location outside of the voltaiq_examples/ directory. 
+# Description
 
-To successfully ingest data into Voltaiq, it must be in a supported format. One of these formats is the Voltaiq Data Format (VDF). This script reads electrochemical data stored in a .mat file and - with the help of a json configuration file - creates a VDF file with the same data that can be successfully uploaded.
-In this notebook, we will show you how to use the conversion script and configure the json file it depends on.
+This script reads electrochemical data stored in a .mat file and - with the help of a json configuration file - creates a VDF file with the same data that can be successfully uploaded.
+In this README, we discuss how to use the conversion script and configure the json file it depends on.
 
-Setup
-Before the script is run and the json is configured, users must have an understanding of how varaibles are structured in the .mat file. In the example .mat file, example_echem_data.mat, loading the file creates a 1x1 struct named meas with 8 fields. Inspecting the meas variable shows that Current is stored in meas.Current. This mapped value for Current will be necessary to configure the json file.
+# Setup
+Before the script is run and the json is configured, users must have an understanding of how varaibles are structured in the .mat file. In the example .mat file, [example_echem_data.mat](https://github.com/vq-clininger/VoltaiqDataFormat/blob/main/mat%20-_%20vdf%20conversion/example_echem_data.mat), loading the file creates a 1x1 struct named meas with 8 fields. Inspecting the meas variable shows that Current is stored in meas.Current. This mapped value for Current will be necessary to configure the json file.
 All variables must be of the same size. In this example, meas.Current, meas.Time, and meas.Voltage are all 38718x1 arrays.
-The JSON configuration File
+
+# The JSON configuration File
 The JSON file must be placed in the same directory as mat_to_vdf.m. 
 Here is an example mat_to_vdf_config.json file:
 {
@@ -31,6 +31,7 @@ Here is an example mat_to_vdf_config.json file:
     "starttime" : "2013-09-29T18:46:19Z",
     "timezone" : "Europe/Berlin"
 }
+
 Where the necessary components of the file are:
 filepath - the filepath to the .mat file to convert.
 variables - the name, location and unit of each variable within the .mat file that will be converted. This must include Test_Time, Current and Potential at minimum. Any variable with a space (Test Time) must be replaced with an underscore (Test_Time).
