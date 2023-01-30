@@ -19,7 +19,7 @@ The Voltaiq Data Format requires the following:
 * Uniqueness of a record will be determined by the datafile name; all datafiles must have a unique fil name.
     * To help create unique file names, relevant metadata should be included in the naming convention.
       * An example convention might be: “{date}_{channel number}_{test name}.csv” -> “2023-01-05_2_CyclingData.csv”
-    * To ensure uniqueness, “Start Time”, “Channel Number”, and “Tester ID” (if present) in combination with filename should be unique. 
+    * To ensure uniqueness, “Start Time”, “Channel Number”, and “Tester ID” (if present) in combination with filename should be unique.
 
 # Sample Files
 Sample [Metadata file](https://github.com/vq-clininger/VoltaiqDataFormat/blob/main/VDFMetadata_Voltaiq_EV_HPPC_Cell01-72.csv) in Voltaiq Data Format
@@ -30,15 +30,15 @@ Sample [Raw Test data files](https://github.com/vq-clininger/VoltaiqDataFormat/b
 Existing data can be converted into Voltaiq Data Format. While manual conversion may be acceptable on a handful of files, manual conversion is not practical for large volumes of data. Scripts can be written to automate the conversion of data into Voltaiq Data Format. Here we provide example scripts.
 
 ### .mat Conversion to Voltaiq Data Format
-Battery data in .mat format (the standard for MATLAB software) can be converted to Voltaiq Data Format. We have included an example .mat script which performs this conversion. This script reads electrochemical data stored in a .mat file and - with the help of a json configuration file - creates a VDF file with the same data. 
+Battery data in .mat format (the standard for MATLAB software) can be converted to Voltaiq Data Format. We have included an example .mat script which performs this conversion. This script reads electrochemical data stored in a .mat file and - with the help of a json configuration file - creates a VDF file with the same data.
  [.mat conversion to VDF](https://github.com/vq-clininger/VoltaiqDataFormat/tree/main/mat%20-_%20vdf%20conversion)
 
 ### .csv, excel, and .rtf Conversion to Voltaiq Data Format
-Included here is a sample script to convert battery data in a generic .csv format to the Voltaiq Data Format. 
+Included here is a sample script to convert battery data in a generic .csv format to the Voltaiq Data Format.
 
-The **generic_vdf_munge.py** script provides methods, mainly through the GenericVDFMunger class, for converting datafiles to the Voltaiq Data Format (VDF).
+The **generic_vdf_convert.py** script provides methods, mainly through the GenericVDFConverter class, for converting datafiles to the Voltaiq Data Format (VDF).
 
-The GenericVDFMunger class needs 2 inputs: the datafile to convert, and a config .yaml file containing munge information to convert the file, such as desired column and unit mappings.
+The GenericVDFConverter class needs 2 inputs: the datafile to convert, and a config .yaml file containing information needed to convert the file, such as desired column and unit mappings.
 
 Currently Supported:
 - csv files
@@ -50,7 +50,7 @@ Currently Supported:
 # Voltaiq Data Format Requirements
 Downloadable [Voltaiq Data Format Specification](https://github.com/vq-clininger/VoltaiqDataFormat/blob/main/Voltaiq%20Data%20Format.pdf)
 
-## Metadata Header 
+## Metadata Header
 Each datafile should begin with a specially formatted Metadata Header which can be any number of lines, in which each line contains a single "key: value" pair representing one piece of metadata (with a “: ” delimiter). There are a set of required fields listed below. The termination of the header is indicated by a line containing only the string "[DATA START]". If the “REQUIRED” metadata are not present, the datafile will not be imported. Sample files can be seen in the [Raw Test datafiles](https://github.com/vq-clininger/VoltaiqDataFormat/blob/main/VDF_Voltaiq_EV_HPPC_Cell01.xlsx) directory.
 ### Metadata (REQUIRED)
 * “Start Time”
@@ -101,11 +101,8 @@ Other optional data entries can be seen in the [Voltaiq Data Format Specificatio
 
 # FAQ
 ### How do I use Voltaiq Data Format?
-Voltaiq Data Format can be used as an interoperable standard for battery performance data and metadata collection. The data can then be used as an internal data standard, shared with partners, and/or uploaded to any Voltaiq system, including the open-access [Voltaiq Community](https://www.voltaiqcommunity.com/). Using this open standard can facilitate the assembly of large battery datasets for subsequent analysis using cutting-edge data science and machine learning techniques. 
+Voltaiq Data Format can be used as an interoperable standard for battery performance data and metadata collection. The data can then be used as an internal data standard, shared with partners, and/or uploaded to any Voltaiq system, including the open-access [Voltaiq Community](https://www.voltaiqcommunity.com/). Using this open standard can facilitate the assembly of large battery datasets for subsequent analysis using cutting-edge data science and machine learning techniques.
 When you collect metadata about your batteries or battery data, collect that data in Voltaiq Metadata Format, and similarly, upload to [Voltaiq Community Edition](https://www.voltaiqcommunity.com/).
 
 ### How do I learn more about Voltaiq Data Format?
 There is a [publication](https://www.frontiersin.org/articles/10.3389/fenrg.2022.1059154/full) about Voltaiq Data Format where you can learn more about the origins of this format and how it can streamline collaboration and extraction of insights across the battery lifecycle.
-
-
-

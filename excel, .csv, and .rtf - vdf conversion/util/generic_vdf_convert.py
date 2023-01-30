@@ -79,7 +79,7 @@ def get_unit_key(unit):
         return '', f"Could not convert unit {unit}"
 
     
-class GenericVDFMunger:
+class GenericVDFConverter:
     """
     Desired flow:
     - Run()
@@ -106,6 +106,7 @@ class GenericVDFMunger:
         self.new_col_map = {}  # parse_config to create this
         self.create_col_map = {} # parse config to create this
         self.unit_map = {}  # parse config to create this
+        self.skip_columns = [] # parse config to create this
         self.parse_config(config_path)
         self.time_format = self.config.get("time format")
         self.header_dict = self.config.get("metadata", {})
@@ -126,6 +127,7 @@ class GenericVDFMunger:
                 unit = v.get("unit")
                 rename = v.get("rename")
                 new_name = v.get("new_name")
+                skip_columns = v.get("skip")
                 if unit:
                     self.unit_map[k] = unit
                 if rename:
@@ -136,6 +138,9 @@ class GenericVDFMunger:
                     self.new_col_map[k] = new_name
                     if unit:
                         self.unit_map[new_name] = unit
+                if skip_columns:
+                    self.skip_columns.append(k)
+                    
         # Create new columns (& unit mappings)
         if self.config.get("create_columns"):
             for name, v in self.config["create_columns"].items():
@@ -215,6 +220,8 @@ class GenericVDFMunger:
             )  # update
         # Need check that data is dataframe, not dict...
         if isinstance(data, pd.DataFrame):
+            if self.skip_columns:
+                data = data.drop(columns = self.skip_columns)
             return data
         else:
             raise Exception("File is not a dataframe - could have multiple tabs.")
